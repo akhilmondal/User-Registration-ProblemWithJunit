@@ -6,8 +6,6 @@ import java.util.regex.Pattern;
 
 public class UserRegistrationProblem {
 
-    static Scanner sc = new Scanner(System.in);
-
     public static boolean validFirstName() {
         String name = "Akhil";
         //regix function is used to check the first name
