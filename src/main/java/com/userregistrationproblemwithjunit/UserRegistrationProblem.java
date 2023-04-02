@@ -5,23 +5,22 @@ import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class UserRegistrationProblem {
+public class UserRegistrationProblem extends CustomException {
 
-    public static boolean validFirstName() {
-        String name = "Akhil";
+    public static boolean validFirstName() throws CustomException{
+        String firstName = "khil";
         //regix function is used to check the first name
         String regix = "^[A-Z]{1}[a-z]{2,}$";
         Pattern p = Pattern.compile(regix);
-        Matcher m = p.matcher(name);
+        Matcher m = p.matcher(firstName);
         boolean result = m.matches();
         // if condition is to check the first name is valid or not
-        if (result)
-            System.out.println("Your First name is valid");
-        else
-            System.out.println("Your First name is invalid");
+        if (result != true) {
+            throw new CustomException("Enter valid First name: ");
+        }
         return result;
     }
-    public static boolean validLastName() {
+    public static boolean validLastName() throws CustomException{
         String nameLast = "Mondal";
         //regix function is used to check the first name
         String regix = "^[A-Z]{1}[a-z]{2,}$";
@@ -29,47 +28,42 @@ public class UserRegistrationProblem {
         Matcher m = p.matcher(nameLast);
         boolean result = m.matches();
         // if condition is to check the Last name is valid or not
-        if (result)
-            System.out.println("Your Last name is valid");
-        else
-            System.out.println("Your Last name is invalid");
+        if (result != true) {
+            throw new CustomException("Enter valid Last name: ");
+        }
         return result;
     }
     // taking ValidEmailId method
-    public static boolean validEmailId(){
+    public static boolean validEmailId() throws CustomException{
         String emailId = "abc.xyz@bl.co.in";
         String regex = "^[a-z]{3}[a-zA-Z.]{0,}+@+bl.co+[a-z.]{0,}$";
         Pattern p = Pattern.compile(regex);
         Matcher m = p.matcher(emailId);
         boolean result = m.matches();
         // if condition is to check the email id is valid or not
-        if (result)
-            System.out.println("Your email id is valid");
-        else
-            System.out.println("Your Email Id is invalid");
-        return result;
-    }
-    public static boolean validPhoneNumber(){
-        String phoneNumber = "91 1234567890";
-        boolean result = Pattern.matches("^91\\s[0-9]{10}$", phoneNumber);
-        // if condition is to check the phone number is valid or not
-        if (result)
-            System.out.println("Your Phone number is valid");
-        else
-            System.out.println("Your Phone number is invalid");
-        return result;
-    }
-    public static boolean validPassword() {
-        String passWord = "A678dft@";
-        boolean result = Pattern.matches("^[0-9A-Za-z]{7,}[@!#$%^&*]{1}$",passWord);
-        if (result) {
-            System.out.println("The entered password is valid.");
-        } else {
-            System.out.println("The entered password is invalid. ");
+        if (result != true) {
+            throw new CustomException("Enter valid Email id: ");
         }
         return result;
     }
-    public static boolean validAllEmailId(){
+    public static boolean validPhoneNumber() throws CustomException{
+        String phoneNumber = "91 1234567890";
+        boolean result = Pattern.matches("^91\\s[0-9]{10}$", phoneNumber);
+        // if condition is to check the phone number is valid or not
+        if (result != true) {
+            throw new CustomException("Enter valid Phone Number: ");
+        }
+        return result;
+    }
+    public static boolean validPassword() throws CustomException{
+        String passWord = "A678dft@";
+        boolean result = Pattern.matches("^[0-9A-Za-z]{7,}[@!#$%^&*]{1}$",passWord);
+        if (result != true) {
+            throw new CustomException("Enter valid Valid password: ");
+        }
+        return result;
+    }
+    public static boolean validAllEmailId() throws CustomException{
         String emailId = "abc-100@yahoo.com";
         /*
         This bellow regex pattern will pass all the email id
@@ -88,10 +82,9 @@ public class UserRegistrationProblem {
         Matcher m = p.matcher(emailId);
         boolean result = m.matches();
         // if condition is to check the email id is valid or not
-        if (result)
-            System.out.println("Your email id is valid");
-        else
-            System.out.println("Your Email Id is invalid");
+        if (result != true) {
+            throw new CustomException("Enter valid Email ids: ");
+        }
         return result;
     }
 
