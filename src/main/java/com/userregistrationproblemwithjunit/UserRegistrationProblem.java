@@ -1,5 +1,6 @@
 package com.userregistrationproblemwithjunit;
 
+import java.lang.reflect.ParameterizedType;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -70,6 +71,31 @@ public class UserRegistrationProblem {
     }
     public static boolean validAllEmailId(){
         String emailId = "abc-100@yahoo.com";
+        /*
+        This bellow regex pattern will pass all the email id
+        • 1. abc@yahoo.com,
+        • 2. abc-100@yahoo.com,
+        • 3. abc.100@yahoo.com
+        • 2. abc111@abc.com,
+        • 4. abc-100@abc.net,
+        • 5. abc.100@abc.com.au
+        • 6. abc@1.com,
+        • 7. abc@gmail.com.com
+        • 8. abc+100@gmail.com
+         */
+        String regex = "^[a-z]{3}[-]{0,}[.+0-9]{0,}+@+[0-9a-z]{1,}+.+[a-z]{2,}[.a-z]{0,}$";
+        Pattern p = Pattern.compile(regex);
+        Matcher m = p.matcher(emailId);
+        boolean result = m.matches();
+        // if condition is to check the email id is valid or not
+        if (result)
+            System.out.println("Your email id is valid");
+        else
+            System.out.println("Your Email Id is invalid");
+        return result;
+    }
+
+    public static boolean validAllEmailIdWithParameter(String emailId){
         /*
         This bellow regex pattern will pass all the email id
         • 1. abc@yahoo.com,
